@@ -13,7 +13,8 @@
         faBirthdayCake,
         faGraduationCap,
         faLaptopCode,
-        faSchool
+        faSchool,
+        faClapperboard,
     } from '@fortawesome/free-solid-svg-icons'
 </script>
 
@@ -125,6 +126,28 @@
                 子育て支援のWEB情報サイトの管理システム<br>
                 学術研究の特許管理システム<br>
                 飲食店向けサブスクサービスアプリ<br>
+            </p>
+		</TimelineContent>
+	</TimelineItem>
+
+    <TimelineItem>
+		<TimelineOppositeContent slot="opposite-content">
+			<p>2020.08 ~ 2021.04</p>
+		</TimelineOppositeContent>
+		<TimelineSeparator>
+			<TimelineDot
+				style={'width: 45px; height: 36px; background-color: #fff; display: flex; justify-content: center; border-color: transparent; '}
+			>
+            <Fa icon={faClapperboard} size="2x"/>
+			</TimelineDot>
+			<TimelineConnector />
+		</TimelineSeparator>
+		<TimelineContent style={'height: 220px;'}>
+			<h3>YouTube 動画編集</h3>
+            <p>天才プログラマーKBOY チャンネル</p>
+            <p>
+                YouTube 動画の企画・構成<br>
+                Adobe PremierePro を使った動画 編集<br>
             </p>
 		</TimelineContent>
 	</TimelineItem>
