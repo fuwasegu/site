@@ -1,6 +1,9 @@
 <script>
     import Fa from 'svelte-fa'
-    import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+    import {
+        faLocationDot,
+        faEnvelope,
+    } from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <div class="wrapper">
@@ -19,6 +22,12 @@
                 <Fa icon={faLocationDot} />
             </span>
             Nagoya, Aichi, Japan
+        </div>
+        <div class="mail-area">
+            <span style="padding-right: 4px;">
+                <Fa icon={faEnvelope} />
+            </span>
+            <a href="contact@fuwasegu.com">contact@fuwasegu.com</a>
         </div>
         <div class="sns-link-area">
             <span class="sns-icon">
@@ -95,6 +104,10 @@
         justify-content: center;
         align-items: center;
         color: rgb(100, 100, 100);
+        padding-bottom: 8px;
+    }
+
+    .mail-area {
         padding-bottom: 16px;
     }
 
