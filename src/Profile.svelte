@@ -27,7 +27,7 @@
             <span style="padding-right: 4px;">
                 <Fa icon={faEnvelope} />
             </span>
-            <a href="contact@fuwasegu.com">contact@fuwasegu.com</a>
+            <a href="mailto:contact@fuwasegu.com">contact@fuwasegu.com</a>
         </div>
         <div class="sns-link-area">
             <span class="sns-icon">
