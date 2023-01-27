@@ -12,11 +12,11 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - run: cd batch
       - name: cargo run
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
         run: cargo run
+        working-directory: ./batch
       - name: git setting
         run: |
           git config --local user.email admin@yfuwasegu.com
