@@ -1,9 +1,9 @@
 name: data_fetch_job
 
-# 毎日毎時 40 分に実行する（40 分に理由はない）
+# 毎日 15時（UTC） に実行する（JST で0時）
 on:
   schedule:
-    - cron: "40 * * * *"
+    - cron: "0 15 * * *"
 
 jobs:
   build_and_test:
