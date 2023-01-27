@@ -1,7 +1,9 @@
 name: data_fetch_job
 
-# 最終的にはここを定期実行にする
-on: [push]
+# 毎日毎時 15 分に実行する（15 分に理由はない）
+on:
+  schedule:
+    - cron: "15 * * * *"
 
 jobs:
   build_and_test:
