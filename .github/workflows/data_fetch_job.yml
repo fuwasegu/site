@@ -12,6 +12,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - run: cd batch
       - run: cargo run
       - name: git setting
         run: |
