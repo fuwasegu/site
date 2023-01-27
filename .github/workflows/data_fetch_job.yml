@@ -13,7 +13,10 @@ jobs:
         with:
           toolchain: stable
       - run: cd batch
-      - run: cargo run
+      - name: cargo run
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+        run: cargo run
       - name: git setting
         run: |
           git config --local user.email admin@yfuwasegu.com

@@ -35,7 +35,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let endpoint = "https://api.github.com/graphql";
 
     // 環境変数から GitHub のトークンを取る
-    let token = env::var("GITHUB_TOKEN").expect("GitHub トークンを環境変数に設定してください");
+    let token = env::var("API_GITHUB_TOKEN").expect("GitHub トークンを環境変数に設定してください");
 
     // ヘッダ
     let mut headers = HashMap::new();
