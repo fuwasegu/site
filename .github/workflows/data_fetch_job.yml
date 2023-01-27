@@ -1,0 +1,25 @@
+name: data_fetch_job
+
+# 最終的にはここを定期実行にする
+on: [push]
+
+jobs:
+  build_and_test:
+    name: Rust project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - run: cargo run
+      - name: git setting
+        run: |
+          git config --local user.email admin@yfuwasegu.com
+          git config --local user.name lunain84
+      - name: Commit files
+        run: |
+          git add -A
+          git commit -m "fetched data"
+          git pull
+          git push
