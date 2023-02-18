@@ -1,3 +1,4 @@
+use chrono::{DateTime, Local};
 use regex::Regex;
 use std::{collections::HashMap, env};
 
@@ -27,7 +28,13 @@ pub struct PullRequest {
     created_at: String,
 }
 
-static IGNORE_REPOS: [&str; 2] = ["lunain84", "yumemi-inc/outputs"];
+#[derive(Serialize)]
+pub struct JsonBody {
+    last_updated_at: DateTime<Local>,
+    pull_requests: Vec<PullRequest>,
+}
+
+static IGNORE_REPOS: [&str; 3] = ["lunain84", "yumemi-inc/outputs", "fuwasegu"];
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -45,7 +52,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // クエリ
     let query = r#"
         query {
-            user(login: "lunain84") {
+            user(login: "fuwasegu") {
                 pullRequests (last: 50, states: MERGED, orderBy: {
                     direction: DESC,
                     field: CREATED_AT
@@ -96,10 +103,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         serde_json::ser::PrettyFormatter::with_indent(b"    "),
     );
 
+    let json = JsonBody {
+        last_updated_at: Local::now(),
+        pull_requests: data.collect::<Vec<PullRequest>>(),
+    };
+
     // シリアライズ
-    data.collect::<Vec<PullRequest>>()
-        .serialize(&mut ser)
-        .unwrap();
+    json.serialize(&mut ser).unwrap();
 
     // json ファイルに書き込み
     match std::fs::write(

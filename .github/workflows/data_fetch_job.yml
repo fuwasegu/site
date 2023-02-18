@@ -4,6 +4,7 @@ name: data_fetch_job
 on:
   schedule:
     - cron: "0 15 * * *"
+  workflow_dispatch:
 
 jobs:
   build_and_test:
