@@ -1,5 +1,7 @@
+use async_hofs::prelude::*;
 use chrono::{DateTime, Local};
 use regex::Regex;
+use scraper::{Html, Selector};
 use std::{collections::HashMap, env};
 
 use gql_client::Client;
@@ -26,6 +28,7 @@ pub struct PullRequests {
 pub struct PullRequest {
     permalink: String,
     created_at: String,
+    ogp_option_url: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -95,7 +98,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .pull_requests
         .nodes
         .into_iter()
-        .filter(|p| !regexp.is_match(p.permalink.as_str()));
+        .filter(|p| !regexp.is_match(p.permalink.as_str()))
+        .map(|p| async {
+            PullRequest {
+                permalink: p.permalink,
+                created_at: p.created_at,
+                ogp_option_url: Some(get_ogp_image_url(p.permalink).await),
+            }
+        })
+        .async_map(|p| async move { p })
+        .await;
 
     // シリアライザを作る
     let mut ser = serde_json::Serializer::with_formatter(
@@ -121,4 +133,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
+}
+
+async fn get_ogp_image_url(url: String) -> String {
+    // プルリク ページをスクレイピング
+    let body = reqwest::get(url).await.unwrap().text().await.unwrap();
+    let document = Html::parse_document(body.as_str());
+    let meta_selector = Selector::parse("meta").unwrap();
+
+    // <meta property="og:image"> から contents の内容を取得（OGP 画像の URL）
+    document
+        .select(&meta_selector)
+        .find(|elm| elm.value().attr("property").unwrap_or("") == "og:image")
+        .unwrap()
+        .value()
+        .attr("content")
+        .unwrap()
+        .to_string()
 }
