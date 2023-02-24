@@ -1,9 +1,11 @@
+use async_hofs::prelude::*;
 use chrono::{DateTime, Local};
-use regex::Regex;
-use std::{collections::HashMap, env};
-
 use gql_client::Client;
+use regex::Regex;
+use scraper::{Html, Selector};
 use serde::{Deserialize, Serialize};
+use std::{collections::HashMap, env};
+use tokio_stream::StreamExt;
 
 #[derive(Deserialize)]
 pub struct Data {
@@ -26,6 +28,7 @@ pub struct PullRequests {
 pub struct PullRequest {
     permalink: String,
     created_at: String,
+    ogp_option_url: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -89,13 +92,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => panic!("正規表現が正しくありません {:?}", e),
     };
 
-    // PR をフィルター
+    // PR をフィルターして OGP 画像のリンクを追加で取得
     let data = data
         .user
         .pull_requests
         .nodes
         .into_iter()
-        .filter(|p| !regexp.is_match(p.permalink.as_str()));
+        .filter(|p| !regexp.is_match(p.permalink.as_str()))
+        .async_map(|p| async move {
+            PullRequest {
+                permalink: p.permalink.clone(),
+                created_at: p.created_at,
+                ogp_option_url: Some(get_ogp_image_url(p.permalink).await),
+            }
+        })
+        .async_map(|p| async move { p });
 
     // シリアライザを作る
     let mut ser = serde_json::Serializer::with_formatter(
@@ -105,7 +116,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let json = JsonBody {
         last_updated_at: Local::now(),
-        pull_requests: data.collect::<Vec<PullRequest>>(),
+        pull_requests: data.collect::<Vec<PullRequest>>().await,
     };
 
     // シリアライズ
@@ -121,4 +132,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
+}
+
+async fn get_ogp_image_url(url: String) -> String {
+    // プルリク ページをスクレイピング
+    let body = reqwest::get(url).await.unwrap().text().await.unwrap();
+    let document = Html::parse_document(body.as_str());
+    let meta_selector = Selector::parse("meta").unwrap();
+
+    // <meta property="og:image"> から contents の内容を取得（OGP 画像の URL）
+    document
+        .select(&meta_selector)
+        .find(|elm| elm.value().attr("property").unwrap_or("") == "og:image")
+        .unwrap()
+        .value()
+        .attr("content")
+        .unwrap()
+        .to_string()
 }
