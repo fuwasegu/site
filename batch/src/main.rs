@@ -1,11 +1,11 @@
 use async_hofs::prelude::*;
 use chrono::{DateTime, Local};
+use gql_client::Client;
 use regex::Regex;
 use scraper::{Html, Selector};
-use std::{collections::HashMap, env};
-
-use gql_client::Client;
 use serde::{Deserialize, Serialize};
+use std::{collections::HashMap, env};
+use tokio_stream::StreamExt;
 
 #[derive(Deserialize)]
 pub struct Data {
@@ -92,22 +92,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => panic!("正規表現が正しくありません {:?}", e),
     };
 
-    // PR をフィルター
+    // PR をフィルターして OGP 画像のリンクを追加で取得
     let data = data
         .user
         .pull_requests
         .nodes
         .into_iter()
         .filter(|p| !regexp.is_match(p.permalink.as_str()))
-        .map(|p| async {
+        .async_map(|p| async move {
             PullRequest {
-                permalink: p.permalink,
+                permalink: p.permalink.clone(),
                 created_at: p.created_at,
                 ogp_option_url: Some(get_ogp_image_url(p.permalink).await),
             }
         })
-        .async_map(|p| async move { p })
-        .await;
+        .async_map(|p| async move { p });
 
     // シリアライザを作る
     let mut ser = serde_json::Serializer::with_formatter(
@@ -117,7 +116,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let json = JsonBody {
         last_updated_at: Local::now(),
-        pull_requests: data.collect::<Vec<PullRequest>>(),
+        pull_requests: data.collect::<Vec<PullRequest>>().await,
     };
 
     // シリアライズ
