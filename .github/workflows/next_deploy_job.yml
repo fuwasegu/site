@@ -15,9 +15,9 @@ jobs:
 
       # Node.js環境のセットアップを行う
       - name: setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
 
       # package.jsonに基づき依存パッケージをインストールする
       - name: install
