@@ -1,0 +1,60 @@
+{
+    "last_updated_at": "2023-02-24T13:34:13.840436+09:00",
+    "pull_requests": [
+        {
+            "permalink": "https://github.com/laravel/framework/pull/45881",
+            "createdAt": "2023-01-31T09:36:35Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/7ce74fa64e68f04df68e4d5ccb9cdbd339caf1bc403b022051d1c4a12b30be29/laravel/framework/pull/45881"
+        },
+        {
+            "permalink": "https://github.com/laravel/framework/pull/45769",
+            "createdAt": "2023-01-23T05:46:58Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/f79c049bd29b1cfb2718e8712ced5ec429ad91ecc84792af897a58592dfed603/laravel/framework/pull/45769"
+        },
+        {
+            "permalink": "https://github.com/belamov/postgres-range/pull/24",
+            "createdAt": "2022-12-06T07:51:08Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/b2350f53a4a33f1626ffe4d89f47d2329f2354b93a4d594066378fa110e53172/belamov/postgres-range/pull/24"
+        },
+        {
+            "permalink": "https://github.com/umbrellio/laravel-pg-extensions/pull/75",
+            "createdAt": "2022-11-16T15:22:39Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/889a1a957b7923b30738483989882b35d278a836df931339576c7d7e44f0d24a/umbrellio/laravel-pg-extensions/pull/75"
+        },
+        {
+            "permalink": "https://github.com/umbrellio/laravel-pg-extensions/pull/74",
+            "createdAt": "2022-11-07T10:08:43Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/f4b8d13cbb0c000e9631d7b329a84ddbf68f8789b822354c1a8ece17514b39ea/umbrellio/laravel-pg-extensions/pull/74"
+        },
+        {
+            "permalink": "https://github.com/joeattardi/picmo/pull/211",
+            "createdAt": "2022-06-07T02:32:41Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/aeaf26ff068bded211a343ddd39b7427355ea12ec5c073d09aef17dece179531/joeattardi/picmo/pull/211"
+        },
+        {
+            "permalink": "https://github.com/slack-php/slack-php-block-kit/pull/3",
+            "createdAt": "2021-12-04T14:32:00Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/bdf914f47e9d79ac7190a5f75c61b7173ecf74a0406b07e8ace224c97d200208/slack-php/slack-php-block-kit/pull/3"
+        },
+        {
+            "permalink": "https://github.com/slack-php/slack-php-block-kit/pull/2",
+            "createdAt": "2021-11-09T15:20:11Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/b5e7bfbbd4ecfca340a634c542af2a7892c638ff71703c1e221fc73100c21fe8/slack-php/slack-php-block-kit/pull/2"
+        },
+        {
+            "permalink": "https://github.com/slack-php/slack-php-block-kit/pull/1",
+            "createdAt": "2021-11-02T01:47:01Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/435ea9ce1362ce00fc46a96fbca6c2fbe3f387d4fe7fc34cd3b21eab6b1d8f66/slack-php/slack-php-block-kit/pull/1"
+        },
+        {
+            "permalink": "https://github.com/svelte-jp/svelte-site-jp/pull/479",
+            "createdAt": "2021-08-26T15:50:24Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/3a1a4bfefaebc2d787601cdee7c53790a5b2acbfcb17d2195eb92d7721c41adb/svelte-jp/svelte-site-jp/pull/479"
+        },
+        {
+            "permalink": "https://github.com/svelte-jp/svelte-site-jp/pull/472",
+            "createdAt": "2021-07-10T14:47:38Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/54874b7b7ca6c046d20883da3784a86c5bf9295cfbc36b86c1dd7026f64d3753/svelte-jp/svelte-site-jp/pull/472"
+        }
+    ]
+}

@@ -18,6 +18,8 @@ export const Layout = ({ children }: LayoutProps) => (
             <Box
                 flex={1}
                 overflowX="hidden"
+                backgroundColor={"gray.100"}
+                mb="20px"
             >
                 {children}
             </Box>

@@ -10,6 +10,7 @@ const Navigation = () => (
     <Stack as="nav">
         <HoverLink href="/">トップ</HoverLink>
         <HoverLink href="/history">ふわせぐの人生</HoverLink>
+        <HoverLink href="/skills">ふわせぐにできること</HoverLink>
         <HoverLink href="/contribution">OSS貢献自慢</HoverLink>
     </Stack>
 );
@@ -50,7 +51,7 @@ const DrawerMenu = () => {
                             <Navigation />
                         </DrawerBody>
                         <DrawerFooter>
-                            <Image src="/favicon.png"></Image>
+                            <Image src="/favicon.png" alt="fuwasegu"></Image>
                         </DrawerFooter>
                     </DrawerContent>
                 </DrawerOverlay>
