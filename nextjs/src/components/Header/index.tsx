@@ -8,10 +8,18 @@ const HoverLink = (props: LinkProps) => (
 
 const Navigation = () => (
     <Stack as="nav">
-        <HoverLink href="/">トップ</HoverLink>
-        <HoverLink href="/history">ふわせぐの人生</HoverLink>
-        <HoverLink href="/skills">ふわせぐにできること</HoverLink>
-        <HoverLink href="/contribution">OSS貢献自慢</HoverLink>
+        <NextLink href="/" passHref>
+            <HoverLink>トップ</HoverLink>
+        </NextLink>
+        <NextLink href="/history" passHref>
+            <HoverLink>ふわせぐの人生</HoverLink>
+        </NextLink>
+        <NextLink href="/skills" passHref>
+            <HoverLink>ふわせぐにできること</HoverLink>
+        </NextLink>
+        <NextLink href="/contribution" passHref>
+            <HoverLink>OSS貢献自慢</HoverLink>
+        </NextLink>
     </Stack>
 );
 
