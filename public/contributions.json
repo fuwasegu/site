@@ -1,5 +1,5 @@
 {
-    "last_updated_at": "2023-05-30T15:13:29.397726388+00:00",
+    "last_updated_at": "2023-05-31T15:13:39.036178343+00:00",
     "pull_requests": [
         {
             "permalink": "https://github.com/laravel/framework/pull/45881",
@@ -9,7 +9,7 @@
         {
             "permalink": "https://github.com/laravel/framework/pull/45769",
             "createdAt": "2023-01-23T05:46:58Z",
-            "ogpOptionUrl": "https://opengraph.githubassets.com/f79c049bd29b1cfb2718e8712ced5ec429ad91ecc84792af897a58592dfed603/laravel/framework/pull/45769"
+            "ogpOptionUrl": "https://opengraph.githubassets.com/cf15d0ea0eaee917e0182d03db8c8672ac25b30317f2f2fa847213ad4954ae7f/laravel/framework/pull/45769"
         },
         {
             "permalink": "https://github.com/belamov/postgres-range/pull/24",
