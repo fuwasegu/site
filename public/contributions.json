@@ -1,10 +1,15 @@
 {
-    "last_updated_at": "2023-08-15T15:11:43.368625011+00:00",
+    "last_updated_at": "2023-08-16T15:11:37.908953031+00:00",
     "pull_requests": [
         {
             "permalink": "https://github.com/laravel/framework/pull/45881",
             "createdAt": "2023-01-31T09:36:35Z",
             "ogpOptionUrl": "https://opengraph.githubassets.com/7ce74fa64e68f04df68e4d5ccb9cdbd339caf1bc403b022051d1c4a12b30be29/laravel/framework/pull/45881"
+        },
+        {
+            "permalink": "https://github.com/arthurkhlghatyan/gql-client-rs/pull/25",
+            "createdAt": "2023-01-26T14:35:45Z",
+            "ogpOptionUrl": "https://opengraph.githubassets.com/31501a008ae0620c56c9d48095682ac388d49b431167cea2fac6e65d7c7a3bb8/arthurkhlghatyan/gql-client-rs/pull/25"
         },
         {
             "permalink": "https://github.com/laravel/framework/pull/45769",
